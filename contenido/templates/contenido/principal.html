@@ -1,0 +1,73 @@
+{% extends "contenido/encabezado.html" %}
+{%block titulo %}PRINCIPAL{% endblock %}
+{% block imagen%}
+{%load static%}
+{%static 'contenido/images/home.png'%}
+{%endblock%}
+{% block titul%}
+<div class="user-info">
+    Principal <span>Inicio</span>
+</div>
+{% endblock%}
+{% block contenido%}
+<!--Encabezdo -->
+<div class="page-header">
+    <div class="page-title">
+        <h3>Hola! Bienvenido al portal CursosDjango
+            <small>Aqui encontraras cursos sobre programación, Base de datos y mucho más</small>
+        </h3>
+    </div>
+</div>
+<!-- /Encabezado-->
+
+
+
+{%block bred%}
+<!--Barra de Navegación-->
+<div class="breadcrumb-line">
+    <ul class="breadcrumb">
+        <li>
+            <a href="{%url 'Principal'%}">
+                {%if request.path == '/' %}
+                Principal
+                {%else%}
+                Principal{{request.path}}
+                {%endif%}
+            </a>
+        </li>
+
+    </ul>
+</div>
+<!--/Barra de Navegación-->
+{%endblock%}
+
+<!--Tabla de cursos-->
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Foto</th>
+            <th>Titulo</th>
+            <th>Descripción</th>
+            <th>Categoria</th>
+            <th>Costo</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td class="text-center">
+                <img src="" alt="" class="img-media">
+            </td>
+            <td class="text-semibold">Curso</td>
+            <td class="muted">Hola</td>
+            <td class="muted">programación</td>
+            <td class="muted">250</td>
+
+        </tr>
+    </tbody>
+</table>
+<!--/Tabla de cursos-->
+
+
+
+{%endblock%}

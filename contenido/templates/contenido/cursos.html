@@ -1,0 +1,66 @@
+{% extends "contenido/encabezado.html" %}
+{%block titulo %}CURSOS{% endblock %}
+{% block imagen%}
+    {%load static%}
+    {%static 'contenido/images/registrar.png'%}
+{%endblock%}
+{% block titul%}                          
+<div class="user-info">
+    Cursos <span>disponibles</span>
+</div>
+{% endblock%}
+{% block contenido%}
+			<!--Encabezdo -->
+				<div class="page-title">
+                    <div class="col-sm-10"> 
+					<h3>Cursos
+                        <br>
+				    <small>Cursos disponibles</small></h3>
+                    </div>
+				</div>	
+			<!-- /Encabezado-->
+            {%block bred%} 
+             <!--Barra de Navegación-->
+             <div class="col-sm-10"> 
+             <div class="breadcrumb-line">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{%url 'Principal'%}">
+                            {%if request.path == '/' %}
+                                Principal
+                            {%else%}
+                                Principal{{request.path}}
+                            {%endif%}
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+             </div>
+            <!--/Barra de Navegación-->
+            {%endblock%}
+			<!-- Lista de cursos -->
+            <div class="col-sm-10">
+			<form class="form-horizontal" action="#" role="form">
+	            <div class="panel panel-default">
+	                <div class="panel-body">   
+						<div class="form-group">
+				            <label class="col-sm-2 control-label text-right">Cursos disponibles:</label>
+				            <div class="col-sm-10">
+				            	<ol>
+                                    <option value=""></option>
+                                    <option value="1">Biotecnologías</option>
+                                    <option value="2">Software</option>
+                                    <option value="3">Gastronomía</option>
+                                </ol>
+	                        </select>
+				            </div>
+				        </div>
+		
+				    </div>
+				</div>
+			</form>
+        </div>
+		    <!--/Lista de cursos -->
+		
+{%endblock%}

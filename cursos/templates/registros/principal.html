@@ -1,0 +1,71 @@
+{% extends "contenido/encabezado.html" %}
+{%block titulo %} Principal{% endblock %}
+{% block imagen%}
+{%load static%}
+{%static 'contenido/images/home.png'%}
+{%endblock%}
+{% block titul%}
+<div class="user-info">
+    Principal <br><span>Inicio</span>
+</div>
+{% endblock%}
+{% block contenido%}
+<!--Encabezdo -->
+<div class="page-title">
+    <div class="col-sm-10">
+        <h3>Hola! Bienvenido a CursosDjango
+            <br>
+            <small>Aqui se mostrarán los cursos lisados<br> Se cambio estilos anteriores a una plantilla sidebar de  <a href="https://www.codinglabweb.com/2021/04/responsive-side-navigation-bar-in-html.html"> codinglabweb </a>  </small>
+        </h3>
+    </div>
+</div>
+<!-- /Encabezado-->
+{%block bred%}
+<!--Barra de Navegación-->
+<div class="col-sm-10">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li>
+                <a href="{%url 'Principal'%}">
+                    {%if request.path == '/' %}
+                    Principal
+                    {%else%}
+                    Principal{{request.path}}
+                    {%endif%}
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<!--/Barra de Navegación-->
+{%endblock%}
+<!--Tabla de cursos-->
+<div class="col-sm-10">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Titulo</th>
+                <th>Descripción</th>
+                <th>Categoria</th>
+                <th>Costo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+            <tr>
+                <td class="text-center">
+                    <img src="{{curso.imagen.url}}" alt="" class="img-rounded" width="80" height="80">
+                </td>
+                <td class="text-semibold">{{curso.titulo_curso}}</td>
+                <td class="muted">{{curso.descripcion}}</td>
+                <td class="muted">{{curso.categoria}}</td>
+                <td class="muted">{{curso.costo}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<!--/Tabla de cursos-->
+{%endblock%}

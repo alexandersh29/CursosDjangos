@@ -1,0 +1,78 @@
+{% extends "contenido/encabezado.html" %}
+{%block titulo %}Consultar los cursos{% endblock %}
+{% block imagen%}
+{%load static%}
+{%static 'contenido/images/home.png'%}
+{%endblock%}
+{% block titul%}
+<div class="user-info">
+    Cursos<br><span>Lista de Cursos</span>
+</div>
+{% endblock%}
+{% block contenido%}
+<!--Encabezdo -->
+<div class="page-title">
+    <div class="col-sm-10">
+        <h3>Lista de cursos
+            <br>
+            <small>Administra los cursos</small>
+        </h3>
+    </div>
+</div>
+<!-- /Encabezado-->
+{%block bred%}
+<!--Barra de Navegación-->
+<div class="col-sm-10">
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li>
+                <a href="{%url 'Principal'%}">
+                    {%if request.path == '/' %}
+                    Principal
+                    {%else%}
+                    Principal{{request.path}}
+                    {%endif%}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--/Barra de Navegación-->
+{%endblock%}
+<!--Tabla de cursos-->
+<div class="col-sm-10">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Titulo</th>
+                <th>Descripción</th>
+                <th>Categoria</th>
+                <th>Costo</th>
+                <th>Ediar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+            <tr>
+                <td class="text-center">
+                    <img src="{{curso.imagen.url}}" alt="" class="img-rounded" width="80" height="80">
+                </td>
+                <td class="text-semibold">{{curso.titulo_curso}}</td>
+                <td class="muted">{{curso.descripcion}}</td>
+                <td class="muted">{{curso.categoria}}</td>
+                <td class="muted">{{curso.costo}}</td>
+                <td class="text-center">
+                    <a href="{%url 'ConsultaIndividual' curso.id%}">Editar</a>
+                </td>
+                <td class="text-center">
+                    <a href="{%url 'Eliminar' curso.id%}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<!--/Tabla de cursos-->
+{%endblock%}
